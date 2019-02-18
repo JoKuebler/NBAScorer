@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestButton.layer.cornerRadius = 10
+        requestButton.layer.cornerRadius = 15
         
     }
 
