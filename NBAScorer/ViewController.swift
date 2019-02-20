@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         // show the alert
         self.present(alert, animated: true, completion: nil)
         
+        Requests.instance.getTodaysData()
+        
     }
     
     

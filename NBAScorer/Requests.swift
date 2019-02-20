@@ -12,9 +12,17 @@ import Alamofire
 
 class Requests {
     
-    func getTodaysData(date: String) {
+    static let instance = Requests()
+    
+    func getTodaysData() {
         
-        return
+        let credential = URLCredential(user: "37589a6c-8217-4b96-8b06-e1ecf8", password: "joni1992", persistence: .forSession)
+     
+        AF.request("https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/game_boxscore.json?gameid=20190211-NYK-CLE")
+            .authenticate(with: credential)
+            .responseJSON { response in
+                debugPrint(response)
+        }
         
     }
     

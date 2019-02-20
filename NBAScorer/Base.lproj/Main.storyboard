@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Counter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNX-yK-1qq">
-                                <rect key="frame" x="106" y="41" width="163" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZq-6u-R7W">
                                 <rect key="frame" x="46" y="597" width="283" height="50"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.46666666670000001" blue="0.90627712670000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,12 +36,11 @@
                         <constraints>
                             <constraint firstItem="SZq-6u-R7W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="M0S-O8-3hL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SZq-6u-R7W" secondAttribute="bottom" constant="20" id="lwo-DW-l53"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SZq-6u-R7W" secondAttribute="trailing" constant="30" id="yZY-Mt-TYJ"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="SZq-6u-R7W" secondAttribute="trailing" constant="30" id="yZY-Mt-TYJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="headLabel" destination="wNX-yK-1qq" id="xbR-Ev-KZN"/>
                         <outlet property="requestButton" destination="SZq-6u-R7W" id="geu-FU-shx"/>
                     </connections>
                 </viewController>
