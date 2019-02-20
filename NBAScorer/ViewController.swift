@@ -10,32 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var headLabel: UILabel!
     @IBOutlet weak var requestButton: UIButton!
+    
+    @IBOutlet weak var awayScore: UILabel!
+    //@IBOutlet weak var homeScore: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         requestButton.layer.cornerRadius = 15
         
-    }
+        Requests.instance.getTodaysData { (result) in
+            
+            if let gameboxScore = result["gameboxscore"] as! NSDictionary? {
 
-    
-    @IBAction func showAlert(_ sender: Any) {
-        
-        // create the alert
-        let alert = UIAlertController(title: "Working", message: "Nice alert!", preferredStyle: UIAlertController.Style.alert)
-        
-        // add an action (button)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-        
-        Requests.instance.getTodaysData()
-        
+                if let quarterSummary = gameboxScore["quarterSummary"] as! NSDictionary? {
+                    
+                    if let quarterTotals = quarterSummary["quarterTotals"] as! NSDictionary? {
+                        self.awayScore.text = quarterTotals["awayScore"]! as? String
+                        //self.homeScore.text = quarterTotals["homeScore"]! as? String
+                    }
+                }
+                
+            }
+        }
     }
-    
     
 }
 
