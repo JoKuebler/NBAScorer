@@ -7,32 +7,26 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var requestButton: UIButton!
-    
+    @IBOutlet weak var homeScore: UILabel!
     @IBOutlet weak var awayScore: UILabel!
-    //@IBOutlet weak var homeScore: UILabel!
+    
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        requestButton.layer.cornerRadius = 15
+        super.viewDidLoad()
         
         Requests.instance.getTodaysData { (result) in
             
-            if let gameboxScore = result["gameboxscore"] as! NSDictionary? {
-
-                if let quarterSummary = gameboxScore["quarterSummary"] as! NSDictionary? {
-                    
-                    if let quarterTotals = quarterSummary["quarterTotals"] as! NSDictionary? {
-                        self.awayScore.text = quarterTotals["awayScore"]! as? String
-                        //self.homeScore.text = quarterTotals["homeScore"]! as? String
-                    }
-                }
-                
-            }
+            let json = JSON(result)
+            
+            self.awayScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["awayScore"].stringValue
+            self.homeScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["homeScore"].stringValue
+            
         }
     }
     
