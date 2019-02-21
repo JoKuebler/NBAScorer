@@ -20,14 +20,18 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
+        Requests.instance.getTodaysGames { (todayGames) in
+            print(todayGames)
+        }
+        
+        // Get todays games
         Requests.instance.getTodaysData { (result) in
-            
             let json = JSON(result)
             
             self.awayScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["awayScore"].stringValue
             self.homeScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["homeScore"].stringValue
-            
         }
+        
     }
     
 }
