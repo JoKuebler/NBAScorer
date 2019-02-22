@@ -9,28 +9,26 @@
 import UIKit
 import SwiftyJSON
 
-class ViewController: UIViewController {
-    
-    @IBOutlet weak var requestButton: UIButton!
-    @IBOutlet weak var homeScore: UILabel!
-    @IBOutlet weak var awayScore: UILabel!
-    
+class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        Requests.instance.getTodaysGames { (todayGames) in
-            print(todayGames)
-        }
+        navigationItem.title = "Last Night's Games"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
-        // Get todays games
-        Requests.instance.getTodaysData { (result) in
-            let json = JSON(result)
-            
-            self.awayScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["awayScore"].stringValue
-            self.homeScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["homeScore"].stringValue
-        }
+//        Requests.instance.getTodaysGames { (todayGames) in
+//            print(todayGames)
+//        }
+//
+//        // Get todays games
+//        Requests.instance.getTodaysData { (result) in
+//            let json = JSON(result)
+//
+//            self.awayScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["awayScore"].stringValue
+//            self.homeScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["homeScore"].stringValue
+//        }
         
     }
     
