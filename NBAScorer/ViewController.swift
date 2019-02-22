@@ -11,25 +11,60 @@ import SwiftyJSON
 
 class ViewController: UITableViewController {
     
+    // Count of games to determine table rows
+    var lastGamesCount = 0
+    // Cell ID for reference
+    let cellID = "gameCells"
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        // Set Navigation Bar Title and make it bigger
         navigationItem.title = "Last Night's Games"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-//        Requests.instance.getTodaysGames { (todayGames) in
-//            print(todayGames)
-//        }
-//
-//        // Get todays games
-//        Requests.instance.getTodaysData { (result) in
-//            let json = JSON(result)
-//
-//            self.awayScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["awayScore"].stringValue
-//            self.homeScore.text = json["gameboxscore"]["quarterSummary"]["quarterTotals"]["homeScore"].stringValue
-//        }
+        // Get last nights games
+        Requests.instance.getLastNight { (lastNightGames) in
+            
+            // Easy access with SwiftyJSON
+            let lastNightJson = JSON(lastNightGames)
+            // Count amount of games
+            self.lastGamesCount = lastNightJson["dailygameschedule"]["gameentry"].count
+            // Reload TableView when Data is ready
+            self.tableView.reloadData()
+            
+        }
         
+        // Register Cell
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        
+    }
+    
+    /**
+     Returns amount of cells needed
+     
+     :param:
+     
+     :returns: gamecount
+    */
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.lastGamesCount
+    }
+    
+    /**
+     Defines how cell should look like
+     
+     :param:
+     
+     :returns: cell
+    */
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        
+        cell.textLabel?.text = "Hello World"
+        
+        return cell
     }
     
 }

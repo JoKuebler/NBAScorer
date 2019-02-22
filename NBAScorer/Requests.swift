@@ -16,8 +16,10 @@ class Requests {
     static let instance = Requests()
     // Today
     let currentDate = Date()
+    let calendar = Calendar.current
     // Converts date in desired format
     let dateFormatter = DateFormatter()
+
     
     func makeRequest(apicall: String, completionHandlerParam: @escaping (_ result : NSDictionary) -> ()) {
         
@@ -55,13 +57,15 @@ class Requests {
      
     :returns: No return value
     */
-    func getTodaysGames(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
+    func getLastNight(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
         
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
         dateFormatter.dateFormat = "yyyyMMdd"
-        let todayString = dateFormatter.string(from: currentDate)
-        print(todayString)
+        let yesterdayString = dateFormatter.string(from: yesterday!)
+
+        print(yesterdayString)
         
-        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/daily_game_schedule.json?fordate=" + todayString, completionHandlerParam: completionHandler)
+        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/daily_game_schedule.json?fordate=" + yesterdayString, completionHandlerParam: completionHandler)
     }
     
     /**
