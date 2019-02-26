@@ -36,9 +36,12 @@ class ViewController: UITableViewController {
             
         }
         
-        // Register Cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.delegate = self
+        tableView.dataSource = self
         
+        // Register Cell
+        tableView.register(GameCell.self, forCellReuseIdentifier: cellID)
+    
     }
     
     /**
@@ -60,11 +63,16 @@ class ViewController: UITableViewController {
      :returns: cell
     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         
-        cell.textLabel?.text = "Hello World"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! GameCell
+        cell.selectionStyle = .none
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 150
     }
     
 }
