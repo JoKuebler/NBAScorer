@@ -25,24 +25,32 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // Get last nights games
-        Requests.instance.getLastNight { (lastNightGames) in
-            
-            // Easy access with SwiftyJSON
-            let lastNightJson = JSON(lastNightGames)
-            // Count amount of games
-            self.lastGamesCount = lastNightJson["dailygameschedule"]["gameentry"].count
-            // Reload TableView when Data is ready
-            self.tableView.reloadData()
-            
-        }
+//        Requests.instance.getLastNight { (lastNightGames) in
+//
+//            // Easy access with SwiftyJSON
+//            let lastNightJson = JSON(lastNightGames)
+//            // Count amount of games
+//            self.lastGamesCount = lastNightJson["dailygameschedule"]["gameentry"].count
+//            // Reload TableView when Data is ready
+//            self.tableView.reloadData()
+//
+//        }
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.backgroundColor = UIColor.lightGray
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
         
         // Register Cell
-        tableView.register(GameCell.self, forCellReuseIdentifier: cellID)
-    
+        self.tableView.register(GameCell.self, forCellReuseIdentifier: cellID)
+        
     }
+    
+    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 10
+//    }
     
     /**
      Returns amount of cells needed
@@ -50,10 +58,23 @@ class ViewController: UITableViewController {
      :param:
      
      :returns: gamecount
-    */
+     */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lastGamesCount
+        return 10
     }
+    
+    // Set the spacing between sections
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 25
+//    }
+    
+    // Make the background color show through
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = UIColor.clear
+//        return headerView
+//    }
+    
     
     /**
      Defines how cell should look like
@@ -61,12 +82,13 @@ class ViewController: UITableViewController {
      :param:
      
      :returns: cell
-    */
+     */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! GameCell
         cell.selectionStyle = .none
-        
+        cell.contentView.backgroundColor = UIColor.lightGray
+    
         return cell
     }
     
@@ -74,6 +96,7 @@ class ViewController: UITableViewController {
     {
         return 150
     }
+
     
 }
 

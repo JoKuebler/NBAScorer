@@ -12,9 +12,6 @@ import UIKit
 
 class GameCell: UITableViewCell {
     
-    var mainTextLabel = UILabel()
-    var sideTextLabel = UILabel()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
@@ -23,6 +20,14 @@ class GameCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    let contentCell: UIView = {
+        let cellView = UIView()
+        cellView.backgroundColor = .white
+        cellView.layer.cornerRadius = 15
+        return cellView
+        
+    }()
     
     // ImageView for away icon
     let iconAway: UIImageView = {
@@ -36,7 +41,7 @@ class GameCell: UITableViewCell {
     let iconHome: UIImageView = {
         let imageViewHome = UIImageView()
         imageViewHome.image = UIImage(named: "hawks.png")!
-       // imageViewHome.backgroundColor = .black
+        // imageViewHome.backgroundColor = .black
         return imageViewHome
     }()
     
@@ -51,42 +56,43 @@ class GameCell: UITableViewCell {
         return exScoreLabel
     }()
     
-//    let scoreAway: UILabel = {
-//        let awayScoreLabel = UILabel()
-//        awayScoreLabel.text = "125"
-//        awayScoreLabel.font = awayScoreLabel.font.withSize(25)
-//        awayScoreLabel.font = UIFont.boldSystemFont(ofSize: awayScoreLabel.font.pointSize)
-//        awayScoreLabel.backgroundColor = .blue
-//        awayScoreLabel.textAlignment = .center
-//        return awayScoreLabel
-//    }()
-//
-//    let scoreHome: UILabel = {
-//        let homeScoreLabel = UILabel()
-//        homeScoreLabel.text = "97"
-//        homeScoreLabel.font = homeScoreLabel.font.withSize(25)
-//        homeScoreLabel.font = UIFont.boldSystemFont(ofSize: homeScoreLabel.font.pointSize)
-//        homeScoreLabel.backgroundColor = .blue
-//        homeScoreLabel.textAlignment = .center
-//        return homeScoreLabel
-//    }()
-//
-//    let separator: UILabel = {
-//        let separatorLabel = UILabel()
-//        separatorLabel.backgroundColor = .red
-//        separatorLabel.text = "-"
-//        separatorLabel.font = separatorLabel.font.withSize(25)
-//        separatorLabel.font = UIFont.boldSystemFont(ofSize: separatorLabel.font.pointSize)
-//        separatorLabel.textAlignment = .center
-//        return separatorLabel
-//    }()
+    //    let scoreAway: UILabel = {
+    //        let awayScoreLabel = UILabel()
+    //        awayScoreLabel.text = "125"
+    //        awayScoreLabel.font = awayScoreLabel.font.withSize(25)
+    //        awayScoreLabel.font = UIFont.boldSystemFont(ofSize: awayScoreLabel.font.pointSize)
+    //        awayScoreLabel.backgroundColor = .blue
+    //        awayScoreLabel.textAlignment = .center
+    //        return awayScoreLabel
+    //    }()
+    //
+    //    let scoreHome: UILabel = {
+    //        let homeScoreLabel = UILabel()
+    //        homeScoreLabel.text = "97"
+    //        homeScoreLabel.font = homeScoreLabel.font.withSize(25)
+    //        homeScoreLabel.font = UIFont.boldSystemFont(ofSize: homeScoreLabel.font.pointSize)
+    //        homeScoreLabel.backgroundColor = .blue
+    //        homeScoreLabel.textAlignment = .center
+    //        return homeScoreLabel
+    //    }()
+    //
+    //    let separator: UILabel = {
+    //        let separatorLabel = UILabel()
+    //        separatorLabel.backgroundColor = .red
+    //        separatorLabel.text = "-"
+    //        separatorLabel.font = separatorLabel.font.withSize(25)
+    //        separatorLabel.font = UIFont.boldSystemFont(ofSize: separatorLabel.font.pointSize)
+    //        separatorLabel.textAlignment = .center
+    //        return separatorLabel
+    //    }()
     
     func setupCellView() {
         
         // Add subview to cell contentView
-        self.contentView.addSubview(iconAway)
-        self.contentView.addSubview(iconHome)
-        self.contentView.addSubview(scoreExcitement)
+        contentCell.addSubview(iconAway)
+        contentCell.addSubview(iconHome)
+        contentCell.addSubview(scoreExcitement)
+        self.contentView.addSubview(contentCell)
         //        self.contentView.addSubview(scoreAway)
         //        self.contentView.addSubview(scoreHome)
         //        self.contentView.addSubview(separator)
@@ -96,29 +102,38 @@ class GameCell: UITableViewCell {
         iconAway.translatesAutoresizingMaskIntoConstraints = false
         iconHome.translatesAutoresizingMaskIntoConstraints = false
         scoreExcitement.translatesAutoresizingMaskIntoConstraints = false
+        contentCell.translatesAutoresizingMaskIntoConstraints = false
         //        scoreAway.translatesAutoresizingMaskIntoConstraints = false
         //        scoreHome.translatesAutoresizingMaskIntoConstraints = false
         //        separator.translatesAutoresizingMaskIntoConstraints = false
         
+     
+        
         NSLayoutConstraint.activate([
             
+            // Creats content with margin to cell borders
+            contentCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            contentCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            contentCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            contentCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+
             // Away Icon Constraints
             iconAway.widthAnchor.constraint(equalToConstant: 64),
             iconAway.heightAnchor.constraint(equalToConstant: 64),
-            iconAway.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
-            iconAway.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
+            iconAway.leadingAnchor.constraint(equalTo: contentCell.leadingAnchor, constant: 25),
+            iconAway.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+
             // Home Icon Constraints
             iconHome.widthAnchor.constraint(equalToConstant: 64),
             iconHome.heightAnchor.constraint(equalToConstant: 64),
-            iconHome.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-            iconHome.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
+            iconHome.trailingAnchor.constraint(equalTo: contentCell.trailingAnchor, constant: -25),
+            iconHome.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+
             // Label Constraints
             scoreExcitement.widthAnchor.constraint(equalToConstant: 80),
-            scoreExcitement.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            scoreExcitement.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            
+            scoreExcitement.centerXAnchor.constraint(equalTo: contentCell.centerXAnchor),
+            scoreExcitement.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor)
+
             //            scoreAway.widthAnchor.constraint(equalToConstant: 64),
             //            scoreAway.heightAnchor.constraint(equalToConstant: 35),
             //            scoreAway.leadingAnchor.constraint(equalTo: iconAway.trailingAnchor, constant: 25),
@@ -131,9 +146,9 @@ class GameCell: UITableViewCell {
             //            separator.heightAnchor.constraint(equalToConstant: 10),
             //            separator.leadingAnchor.constraint(equalTo: scoreAway.trailingAnchor, constant: 5),
             //            separator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-            
+
             ])
-        
+
     }
     
 }
