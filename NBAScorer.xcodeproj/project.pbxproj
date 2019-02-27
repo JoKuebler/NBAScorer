@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DD3D16F322205490003E54DA /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D16F222205490003E54DA /* GameCell.swift */; };
+		DDC2C8352226913100283C1E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */; };
+		DDC2C8362226913100283C1E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */; };
 		DDC95766221B256100CF5F54 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC95765221B256100CF5F54 /* Requests.swift */; };
 		DDD1BB89221B22EB002A8B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1BB88221B22EB002A8B49 /* AppDelegate.swift */; };
 		DDD1BB8B221B22EB002A8B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1BB8A221B22EB002A8B49 /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 		0A61542325A8493281D7B24D /* Pods_NBAScorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAScorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BB51D025DD34F0896CDFF1 /* Pods-NBAScorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAScorer.release.xcconfig"; path = "Target Support Files/Pods-NBAScorer/Pods-NBAScorer.release.xcconfig"; sourceTree = "<group>"; };
 		DD3D16F222205490003E54DA /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		DDC95765221B256100CF5F54 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		DDD1BB85221B22EB002A8B49 /* NBAScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBAScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD1BB88221B22EB002A8B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +65,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DDC2C832222690C400283C1E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */,
+				DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		DDD1BB7C221B22EB002A8B49 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 		DDD1BB87221B22EB002A8B49 /* NBAScorer */ = {
 			isa = PBXGroup;
 			children = (
+				DDC2C832222690C400283C1E /* Fonts */,
 				DDD1BB88221B22EB002A8B49 /* AppDelegate.swift */,
 				DDD1BB8A221B22EB002A8B49 /* ViewController.swift */,
 				DDD1BB8C221B22EB002A8B49 /* Main.storyboard */,
@@ -154,8 +168,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC2C8362226913100283C1E /* OpenSans-Regular.ttf in Resources */,
 				DDD1BB93221B22ED002A8B49 /* LaunchScreen.storyboard in Resources */,
 				DDD1BB90221B22ED002A8B49 /* Assets.xcassets in Resources */,
+				DDC2C8352226913100283C1E /* OpenSans-Bold.ttf in Resources */,
 				DDD1BB8E221B22EB002A8B49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,8 +23,10 @@ class GameCell: UITableViewCell {
     
     let contentCell: UIView = {
         let cellView = UIView()
-        cellView.backgroundColor = .white
+        cellView.backgroundColor = UIColor(red: 254/255, green: 255/255, blue: 254/255, alpha: 1)
         cellView.layer.cornerRadius = 15
+        cellView.layer.borderWidth = 1
+        cellView.layer.borderColor = UIColor(red: 231/255, green: 233/255, blue: 237/255, alpha: 1).cgColor
         return cellView
         
     }()
@@ -32,16 +34,16 @@ class GameCell: UITableViewCell {
     // ImageView for away icon
     let iconAway: UIImageView = {
         let imageViewAway = UIImageView()
-        imageViewAway.image = UIImage(named: "hawks.png")!
-        //imageViewAway.backgroundColor = .black
+        //imageViewAway.image = UIImage(named: "hawks.png")!
+        imageViewAway.backgroundColor = .green
         return imageViewAway
     }()
     
     // ImageView for home icon
     let iconHome: UIImageView = {
         let imageViewHome = UIImageView()
-        imageViewHome.image = UIImage(named: "hawks.png")!
-        // imageViewHome.backgroundColor = .black
+        //imageViewHome.image = UIImage(named: "hawks.png")!
+        imageViewHome.backgroundColor = .black
         return imageViewHome
     }()
     
@@ -51,9 +53,37 @@ class GameCell: UITableViewCell {
         exScoreLabel.text = "9.8"
         exScoreLabel.font = exScoreLabel.font.withSize(30)
         exScoreLabel.font = UIFont.boldSystemFont(ofSize: exScoreLabel.font.pointSize)
+        exScoreLabel.font = UIFont(name: "OpenSans-Bold", size: 25)
         //exScoreLabel.backgroundColor = .blue
         exScoreLabel.textAlignment = .center
         return exScoreLabel
+    }()
+    
+    let teamNameAway: UILabel = {
+        let awayTeamLabel = UILabel()
+        awayTeamLabel.text = "AWY"
+        awayTeamLabel.font = awayTeamLabel.font.withSize(30)
+        awayTeamLabel.font = UIFont.boldSystemFont(ofSize: awayTeamLabel.font.pointSize)
+        awayTeamLabel.font = UIFont(name: "OpenSans-Bold", size: 20)
+        return awayTeamLabel
+    }()
+    
+    let teamNameHome: UILabel = {
+        let homeTeamLabel = UILabel()
+        homeTeamLabel.text = "HME"
+        homeTeamLabel.font = homeTeamLabel.font.withSize(30)
+        homeTeamLabel.font = UIFont.boldSystemFont(ofSize: homeTeamLabel.font.pointSize)
+        homeTeamLabel.font = UIFont(name: "OpenSans-Bold", size: 20)
+        return homeTeamLabel
+    }()
+    
+    let arenaName: UILabel = {
+        let arenaLabel = UILabel()
+        arenaLabel.text = "Arena"
+        arenaLabel.font = arenaLabel.font.withSize(30)
+        arenaLabel.font = UIFont.boldSystemFont(ofSize: arenaLabel.font.pointSize)
+        arenaLabel.font = UIFont(name: "OpenSans-Bold", size: 15)
+        return arenaLabel
     }()
     
     //    let scoreAway: UILabel = {
@@ -92,6 +122,9 @@ class GameCell: UITableViewCell {
         contentCell.addSubview(iconAway)
         contentCell.addSubview(iconHome)
         contentCell.addSubview(scoreExcitement)
+        contentCell.addSubview(teamNameAway)
+        contentCell.addSubview(teamNameHome)
+        contentCell.addSubview(arenaName)
         self.contentView.addSubview(contentCell)
         //        self.contentView.addSubview(scoreAway)
         //        self.contentView.addSubview(scoreHome)
@@ -102,6 +135,9 @@ class GameCell: UITableViewCell {
         iconAway.translatesAutoresizingMaskIntoConstraints = false
         iconHome.translatesAutoresizingMaskIntoConstraints = false
         scoreExcitement.translatesAutoresizingMaskIntoConstraints = false
+        teamNameAway.translatesAutoresizingMaskIntoConstraints = false
+        teamNameHome.translatesAutoresizingMaskIntoConstraints = false
+        arenaName.translatesAutoresizingMaskIntoConstraints = false
         contentCell.translatesAutoresizingMaskIntoConstraints = false
         //        scoreAway.translatesAutoresizingMaskIntoConstraints = false
         //        scoreHome.translatesAutoresizingMaskIntoConstraints = false
@@ -113,26 +149,36 @@ class GameCell: UITableViewCell {
             
             // Creats content with margin to cell borders
             contentCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            contentCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            contentCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             contentCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             contentCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
-            // Away Icon Constraints
+            // Away Team Constraints
             iconAway.widthAnchor.constraint(equalToConstant: 64),
             iconAway.heightAnchor.constraint(equalToConstant: 64),
             iconAway.leadingAnchor.constraint(equalTo: contentCell.leadingAnchor, constant: 25),
             iconAway.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+            teamNameAway.topAnchor.constraint(equalTo: iconAway.bottomAnchor, constant: 5),
+            teamNameAway.centerXAnchor.constraint(equalTo: iconAway.centerXAnchor),
 
-            // Home Icon Constraints
+            // Home Team Constraints
             iconHome.widthAnchor.constraint(equalToConstant: 64),
             iconHome.heightAnchor.constraint(equalToConstant: 64),
             iconHome.trailingAnchor.constraint(equalTo: contentCell.trailingAnchor, constant: -25),
             iconHome.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+            teamNameHome.topAnchor.constraint(equalTo: iconHome.bottomAnchor, constant: 5),
+            teamNameHome.centerXAnchor.constraint(equalTo: iconHome.centerXAnchor),
 
-            // Label Constraints
+            // Score Constraints
             scoreExcitement.widthAnchor.constraint(equalToConstant: 80),
             scoreExcitement.centerXAnchor.constraint(equalTo: contentCell.centerXAnchor),
-            scoreExcitement.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor)
+            scoreExcitement.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+            
+            // Arena Constraints
+            arenaName.topAnchor.constraint(equalTo: contentCell.topAnchor, constant: 10),
+            arenaName.centerXAnchor.constraint(equalTo: contentCell.centerXAnchor)
+            
+            
 
             //            scoreAway.widthAnchor.constraint(equalToConstant: 64),
             //            scoreAway.heightAnchor.constraint(equalToConstant: 35),

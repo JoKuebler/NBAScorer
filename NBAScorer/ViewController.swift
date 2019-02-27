@@ -22,8 +22,7 @@ class ViewController: UITableViewController {
         
         // Set Navigation Bar Title and make it bigger
         navigationItem.title = "Last Night's Games"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
+        navigationController?.navigationBar.prefersLargeTitles = true        
         // Get last nights games
 //        Requests.instance.getLastNight { (lastNightGames) in
 //
@@ -36,9 +35,13 @@ class ViewController: UITableViewController {
 //
 //        }
         
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family) Font Names: \(names)")
+//        }
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = UIColor.lightGray
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         
@@ -87,14 +90,14 @@ class ViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! GameCell
         cell.selectionStyle = .none
-        cell.contentView.backgroundColor = UIColor.lightGray
+        cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
     
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 150
+        return 160
     }
 
     
