@@ -22,7 +22,7 @@ class ViewController: UITableViewController {
         
         // Set Navigation Bar Title and make it bigger
         navigationItem.title = "Last Night's Games"
-        navigationController?.navigationBar.prefersLargeTitles = true        
+        navigationController?.navigationBar.prefersLargeTitles = true
         // Get last nights games
 //        Requests.instance.getLastNight { (lastNightGames) in
 //
@@ -35,13 +35,14 @@ class ViewController: UITableViewController {
 //
 //        }
         
-//        for family in UIFont.familyNames.sorted() {
-//            let names = UIFont.fontNames(forFamilyName: family)
-//            print("Family: \(family) Font Names: \(names)")
-//        }
+        //        for family in UIFont.familyNames.sorted() {
+        //            let names = UIFont.fontNames(forFamilyName: family)
+        //            print("Family: \(family) Font Names: \(names)")
+        //        }
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         
@@ -51,9 +52,6 @@ class ViewController: UITableViewController {
     }
     
     
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 10
-//    }
     
     /**
      Returns amount of cells needed
@@ -63,20 +61,8 @@ class ViewController: UITableViewController {
      :returns: gamecount
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
-    
-    // Set the spacing between sections
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 25
-//    }
-    
-    // Make the background color show through
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
     
     
     /**
@@ -91,7 +77,7 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! GameCell
         cell.selectionStyle = .none
         cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
-    
+        
         return cell
     }
     
@@ -99,7 +85,7 @@ class ViewController: UITableViewController {
     {
         return 160
     }
-
+    
     
 }
 
