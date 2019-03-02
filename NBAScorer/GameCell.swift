@@ -43,8 +43,8 @@ class GameCell: UITableViewCell {
     
     // Sets up styles of ImageViews
     func setupUIImageView() {
-        iconAway.backgroundColor = .green
-        iconHome.backgroundColor = .black
+        iconAway.backgroundColor = .white
+        iconHome.backgroundColor = .white
     }
     
     // Sets up styles of Labels
@@ -88,18 +88,18 @@ class GameCell: UITableViewCell {
             contentCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
             // Away Team Constraints
-            iconAway.widthAnchor.constraint(equalToConstant: 64),
-            iconAway.heightAnchor.constraint(equalToConstant: 64),
+            iconAway.widthAnchor.constraint(equalToConstant: 50),
+            iconAway.heightAnchor.constraint(equalToConstant: 50),
             iconAway.leadingAnchor.constraint(equalTo: contentCell.leadingAnchor, constant: 25),
-            iconAway.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+            iconAway.topAnchor.constraint(equalTo: arenaName.bottomAnchor, constant: 5),
             teamNameAway.topAnchor.constraint(equalTo: iconAway.bottomAnchor, constant: 5),
             teamNameAway.centerXAnchor.constraint(equalTo: iconAway.centerXAnchor),
 
             // Home Team Constraints
-            iconHome.widthAnchor.constraint(equalToConstant: 64),
-            iconHome.heightAnchor.constraint(equalToConstant: 64),
+            iconHome.widthAnchor.constraint(equalToConstant: 50),
+            iconHome.heightAnchor.constraint(equalToConstant: 50),
             iconHome.trailingAnchor.constraint(equalTo: contentCell.trailingAnchor, constant: -25),
-            iconHome.centerYAnchor.constraint(equalTo: contentCell.centerYAnchor),
+            iconHome.topAnchor.constraint(equalTo: arenaName.bottomAnchor, constant: 5),
             teamNameHome.topAnchor.constraint(equalTo: iconHome.bottomAnchor, constant: 5),
             teamNameHome.centerXAnchor.constraint(equalTo: iconHome.centerXAnchor),
 

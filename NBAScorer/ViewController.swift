@@ -26,20 +26,15 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         // Get last nights games
         Requests.instance.getLastNight { (lastNightGames) in
-
+            
             // Easy access with SwiftyJSON
             self.lastNightJson = JSON(lastNightGames)
             // Count amount of games
             self.lastGamesCount = self.lastNightJson["dailygameschedule"]["gameentry"].count
             // Reload TableView when Data is ready
             self.tableView.reloadData()
-
+            
         }
-        
-        //        for family in UIFont.familyNames.sorted() {
-        //            let names = UIFont.fontNames(forFamilyName: family)
-        //            print("Family: \(family) Font Names: \(names)")
-        //        }
         
         let tableViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         self.tableView.delegate = self
@@ -64,7 +59,8 @@ class ViewController: UITableViewController {
      :returns: gamecount
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lastGamesCount
+        //return self.lastGamesCount
+        return 3
     }
     
     
@@ -93,13 +89,15 @@ class ViewController: UITableViewController {
         cell.teamNameAway.text = singleGame["awayTeam"]["Abbreviation"].string
         cell.teamNameHome.text = singleGame["homeTeam"]["Abbreviation"].string
         cell.arenaName.text = singleGame["location"].string
+        cell.iconHome.image = UIImage(named: "hawks.png")!
+        cell.iconAway.image = UIImage(named: "hawks.png")!
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 160
+        return 140
     }
     
     
