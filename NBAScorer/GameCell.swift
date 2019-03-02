@@ -12,6 +12,9 @@ import UIKit
 
 class GameCell: UITableViewCell {
     
+    var awayTeam = ""
+    var homeTeam = ""
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellView()
@@ -61,7 +64,6 @@ class GameCell: UITableViewCell {
     
     let teamNameAway: UILabel = {
         let awayTeamLabel = UILabel()
-        awayTeamLabel.text = "AWY"
         awayTeamLabel.font = awayTeamLabel.font.withSize(30)
         awayTeamLabel.font = UIFont.boldSystemFont(ofSize: awayTeamLabel.font.pointSize)
         awayTeamLabel.font = UIFont(name: "OpenSans-Bold", size: 20)
@@ -70,7 +72,6 @@ class GameCell: UITableViewCell {
     
     let teamNameHome: UILabel = {
         let homeTeamLabel = UILabel()
-        homeTeamLabel.text = "HME"
         homeTeamLabel.font = homeTeamLabel.font.withSize(30)
         homeTeamLabel.font = UIFont.boldSystemFont(ofSize: homeTeamLabel.font.pointSize)
         homeTeamLabel.font = UIFont(name: "OpenSans-Bold", size: 20)
@@ -79,7 +80,6 @@ class GameCell: UITableViewCell {
     
     let arenaName: UILabel = {
         let arenaLabel = UILabel()
-        arenaLabel.text = "Arena"
         arenaLabel.font = arenaLabel.font.withSize(30)
         arenaLabel.font = UIFont.boldSystemFont(ofSize: arenaLabel.font.pointSize)
         arenaLabel.font = UIFont(name: "OpenSans-Bold", size: 15)
