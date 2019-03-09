@@ -10,6 +10,7 @@
 		DD3D16F322205490003E54DA /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D16F222205490003E54DA /* GameCell.swift */; };
 		DDC2C8352226913100283C1E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */; };
 		DDC2C8362226913100283C1E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */; };
+		DDC2C838223437EA00283C1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C837223437EA00283C1E /* Constants.swift */; };
 		DDC95766221B256100CF5F54 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC95765221B256100CF5F54 /* Requests.swift */; };
 		DDD1BB89221B22EB002A8B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1BB88221B22EB002A8B49 /* AppDelegate.swift */; };
 		DDD1BB8B221B22EB002A8B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1BB8A221B22EB002A8B49 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		DD3D16F222205490003E54DA /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		DDC2C837223437EA00283C1E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DDC95765221B256100CF5F54 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		DDD1BB85221B22EB002A8B49 /* NBAScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBAScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD1BB88221B22EB002A8B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				DDD1BB94221B22ED002A8B49 /* Info.plist */,
 				DDC95765221B256100CF5F54 /* Requests.swift */,
 				DD3D16F222205490003E54DA /* GameCell.swift */,
+				DDC2C837223437EA00283C1E /* Constants.swift */,
 			);
 			path = NBAScorer;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC2C838223437EA00283C1E /* Constants.swift in Sources */,
 				DDC95766221B256100CF5F54 /* Requests.swift in Sources */,
 				DDD1BB8B221B22EB002A8B49 /* ViewController.swift in Sources */,
 				DDD1BB89221B22EB002A8B49 /* AppDelegate.swift in Sources */,
