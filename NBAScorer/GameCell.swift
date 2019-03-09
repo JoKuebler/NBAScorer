@@ -49,12 +49,18 @@ class GameCell: UITableViewCell {
     
     // Sets up styles of Labels
     func setupLabels() {
-        scoreExcitement.font = UIFont(name: "OpenSans-Bold", size: 25)
+        scoreExcitement.font = UIFont(name: "OpenSans-Bold", size: 20)
         scoreExcitement.text = "10.0"
         scoreExcitement.textAlignment = .center
-        teamNameAway.font = UIFont(name: "OpenSans-Bold", size: 20)
-        teamNameHome.font = UIFont(name: "OpenSans-Bold", size: 20)
-        arenaName.font = UIFont(name: "OpenSans-Bold", size: 15)
+        teamNameAway.font = UIFont(name: "OpenSans-Regular", size: 12)
+        teamNameHome.font = UIFont(name: "OpenSans-Regular", size: 12)
+        teamNameAway.numberOfLines = 2
+        teamNameHome.numberOfLines = 2
+        teamNameAway.lineBreakMode = .byWordWrapping
+        teamNameAway.textAlignment = .center
+        teamNameHome.textAlignment = .center
+        arenaName.font = UIFont(name: "OpenSans-Regular", size: 15)
+
     }
     
     // Sets up cell View and add constraints to all elements
@@ -94,6 +100,7 @@ class GameCell: UITableViewCell {
             iconAway.topAnchor.constraint(equalTo: arenaName.bottomAnchor, constant: 5),
             teamNameAway.topAnchor.constraint(equalTo: iconAway.bottomAnchor, constant: 5),
             teamNameAway.centerXAnchor.constraint(equalTo: iconAway.centerXAnchor),
+            teamNameAway.widthAnchor.constraint(equalToConstant: 80),
 
             // Home Team Constraints
             iconHome.widthAnchor.constraint(equalToConstant: 50),
@@ -102,6 +109,7 @@ class GameCell: UITableViewCell {
             iconHome.topAnchor.constraint(equalTo: arenaName.bottomAnchor, constant: 5),
             teamNameHome.topAnchor.constraint(equalTo: iconHome.bottomAnchor, constant: 5),
             teamNameHome.centerXAnchor.constraint(equalTo: iconHome.centerXAnchor),
+            teamNameHome.widthAnchor.constraint(equalToConstant: 80),
 
             // Score Constraints
             scoreExcitement.widthAnchor.constraint(equalToConstant: 80),

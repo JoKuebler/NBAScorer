@@ -14,9 +14,7 @@ class ViewController: UITableViewController {
     // Count of games to determine table rows
     var lastGamesCount = 0
     var lastNightJson = JSON()
-    // Cell ID for reference
-    let cellID = "gameCells"
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,7 +43,7 @@ class ViewController: UITableViewController {
         
         
         // Register Cell
-        self.tableView.register(GameCell.self, forCellReuseIdentifier: cellID)
+        self.tableView.register(GameCell.self, forCellReuseIdentifier: Constants.instance.cellID)
         
     }
     
@@ -59,8 +57,8 @@ class ViewController: UITableViewController {
      :returns: gamecount
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.lastGamesCount
-        return 3
+        return self.lastGamesCount
+        //return 3
     }
     
     
@@ -73,7 +71,7 @@ class ViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! GameCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.instance.cellID) as! GameCell
         
         // Get daily Game Entries
         let gameEntries = self.lastNightJson["dailygameschedule"]["gameentry"]
@@ -85,19 +83,22 @@ class ViewController: UITableViewController {
         // Change backgroundcolor of cells
         cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         
+        let curAbrAway = singleGame["awayTeam"]["Abbreviation"].string
+        let curAbrHome = singleGame["homeTeam"]["Abbreviation"].string
+        
         // Set values of UILabels and UIImages
-        cell.teamNameAway.text = singleGame["awayTeam"]["Abbreviation"].string
-        cell.teamNameHome.text = singleGame["homeTeam"]["Abbreviation"].string
+        cell.teamNameAway.text = Constants.instance.teamNames[curAbrAway!]
+        cell.teamNameHome.text = Constants.instance.teamNames[curAbrHome!]
         cell.arenaName.text = singleGame["location"].string
-        cell.iconHome.image = UIImage(named: "hawks.png")!
-        cell.iconAway.image = UIImage(named: "hawks.png")!
+        cell.iconAway.image = UIImage(named: curAbrAway! + ".png")!
+        cell.iconHome.image = UIImage(named: curAbrHome! + ".png")!
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 140
+        return 145
     }
     
     
