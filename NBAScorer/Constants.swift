@@ -16,7 +16,7 @@ struct Constants {
     // Map team abbreviations to complete names
     var teamNames: [String:String] = [
         "ATL" : "Atlanta Hawks",
-        "BKN" : "Brooklyn Nets",
+        "BRO" : "Brooklyn Nets",
         "BOS" : "Boston Celtics",
         "CHA" : "Charlotte Hornets",
         "CHI" : "Chicago\nBulls",

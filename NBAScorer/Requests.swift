@@ -19,7 +19,7 @@ class Requests {
     let calendar = Calendar.current
     // Converts date in desired format
     let dateFormatter = DateFormatter()
-
+    
     
     func makeRequest(apicall: String, completionHandlerParam: @escaping (_ result : NSDictionary) -> ()) {
         
@@ -51,32 +51,34 @@ class Requests {
     }
     
     /**
-    Sends an API request to get todays games
+     Sends an API request to scoreboard of todays gamres
      
-    :param:
+     :param:
      
-    :returns: No return value
-    */
-    func getLastNight(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
+     :returns: No return value
+     */
+    func getScoreBoard(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
         
         let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
         dateFormatter.dateFormat = "yyyyMMdd"
         let yesterdayString = dateFormatter.string(from: yesterday!)
-
-        print(yesterdayString)
         
-        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/daily_game_schedule.json?fordate=" + yesterdayString, completionHandlerParam: completionHandler)
+        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/current/scoreboard.json?fordate=" + yesterdayString, completionHandlerParam: completionHandler)
     }
     
     /**
-     Sends an API request
+     Sends an API request to get current team standings
      
-     :param: completionHandler to be able to return data when fetched
+     :param:
      
      :returns: No return value
      */
-    func getTodaysData(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
-        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/game_boxscore.json?gameid=20190213-PHI-NYK", completionHandlerParam: completionHandler)
+    func getTeamStandings(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
+        
+        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/conference_team_standings.json", completionHandlerParam: completionHandler)
     }
+    
+    
+    
     
 }

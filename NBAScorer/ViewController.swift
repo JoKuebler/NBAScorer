@@ -13,8 +13,11 @@ class ViewController: UITableViewController {
     
     // Count of games to determine table rows
     var lastGamesCount = 0
-    var lastNightJson = JSON()
-
+    var scoreBoardResult = JSON()
+    var teamStandingResult = JSON()
+    var teamScore = 0.0
+    var standingScore = 0.0
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -23,17 +26,28 @@ class ViewController: UITableViewController {
         navigationItem.title = "Last Night's Games"
         navigationController?.navigationBar.prefersLargeTitles = true
         // Get last nights games
-        Requests.instance.getLastNight { (lastNightGames) in
+        Requests.instance.getScoreBoard { (lastNightGames) in
             
             // Easy access with SwiftyJSON
-            self.lastNightJson = JSON(lastNightGames)
+            self.scoreBoardResult = JSON(lastNightGames)
             // Count amount of games
-            self.lastGamesCount = self.lastNightJson["dailygameschedule"]["gameentry"].count
+            self.lastGamesCount = self.scoreBoardResult["scoreboard"]["gameScore"].count
+        
             // Reload TableView when Data is ready
             self.tableView.reloadData()
             
         }
         
+        Requests.instance.getTeamStandings { (teamStandings) in
+            
+            self.teamStandingResult = JSON(teamStandings)
+            
+            // Reload TableView when Data is ready
+            self.tableView.reloadData()
+            
+        }
+        
+        // Table View Settings
         let tableViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -41,12 +55,10 @@ class ViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.tableView.contentInset = tableViewInsets
         
-        
         // Register Cell
         self.tableView.register(GameCell.self, forCellReuseIdentifier: Constants.instance.cellID)
         
     }
-    
     
     
     /**
@@ -58,7 +70,6 @@ class ViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.lastGamesCount
-        //return 3
     }
     
     
@@ -71,30 +82,36 @@ class ViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // Get and style GameCell: No grey background on touch and Change backgroundcolor of cells
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.instance.cellID) as! GameCell
+        cell.selectionStyle = .none
+        cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         
         // Get daily Game Entries
-        let gameEntries = self.lastNightJson["dailygameschedule"]["gameentry"]
+        let gameEntries = self.scoreBoardResult["scoreboard"]["gameScore"]
+        
         // Assign each entry to one row
         let singleGame = gameEntries[indexPath.row]
         
-        // No grey background on touch
-        cell.selectionStyle = .none
-        // Change backgroundcolor of cells
-        cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
+        // Get abbreviation for easy use later
+        let curAbrAway = singleGame["game"]["awayTeam"]["Abbreviation"].string
+        let curAbrHome = singleGame["game"]["homeTeam"]["Abbreviation"].string
         
-        let curAbrAway = singleGame["awayTeam"]["Abbreviation"].string
-        let curAbrHome = singleGame["homeTeam"]["Abbreviation"].string
+        // Calculate Scores
+        self.teamScore = Scoring.instance.calculateTeamScore(scoreBoardJson: singleGame)
+        self.standingScore = Scoring.instance.calculateTeamStandScore(standingJson: self.teamStandingResult)
         
         // Set values of UILabels and UIImages
         cell.teamNameAway.text = Constants.instance.teamNames[curAbrAway!]
         cell.teamNameHome.text = Constants.instance.teamNames[curAbrHome!]
-        cell.arenaName.text = singleGame["location"].string
+        cell.arenaName.text = singleGame["game"]["location"].string
         cell.iconAway.image = UIImage(named: curAbrAway! + ".png")!
         cell.iconHome.image = UIImage(named: curAbrHome! + ".png")!
+        cell.scoreExcitement.text = "\(self.teamScore)"
         
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Jonas.K. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 
@@ -20,7 +19,7 @@ class GameCell: UITableViewCell {
     let teamNameAway = UILabel()
     let teamNameHome = UILabel()
     let arenaName = UILabel()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUIView()
@@ -50,7 +49,6 @@ class GameCell: UITableViewCell {
     // Sets up styles of Labels
     func setupLabels() {
         scoreExcitement.font = UIFont(name: "OpenSans-Bold", size: 20)
-        scoreExcitement.text = "10.0"
         scoreExcitement.textAlignment = .center
         teamNameAway.font = UIFont(name: "OpenSans-Regular", size: 12)
         teamNameHome.font = UIFont(name: "OpenSans-Regular", size: 12)
@@ -60,7 +58,7 @@ class GameCell: UITableViewCell {
         teamNameAway.textAlignment = .center
         teamNameHome.textAlignment = .center
         arenaName.font = UIFont(name: "OpenSans-Regular", size: 15)
-
+        
     }
     
     // Sets up cell View and add constraints to all elements
@@ -92,7 +90,7 @@ class GameCell: UITableViewCell {
             contentCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             contentCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             contentCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-
+            
             // Away Team Constraints
             iconAway.widthAnchor.constraint(equalToConstant: 50),
             iconAway.heightAnchor.constraint(equalToConstant: 50),
@@ -101,7 +99,7 @@ class GameCell: UITableViewCell {
             teamNameAway.topAnchor.constraint(equalTo: iconAway.bottomAnchor, constant: 5),
             teamNameAway.centerXAnchor.constraint(equalTo: iconAway.centerXAnchor),
             teamNameAway.widthAnchor.constraint(equalToConstant: 80),
-
+            
             // Home Team Constraints
             iconHome.widthAnchor.constraint(equalToConstant: 50),
             iconHome.heightAnchor.constraint(equalToConstant: 50),
@@ -110,7 +108,7 @@ class GameCell: UITableViewCell {
             teamNameHome.topAnchor.constraint(equalTo: iconHome.bottomAnchor, constant: 5),
             teamNameHome.centerXAnchor.constraint(equalTo: iconHome.centerXAnchor),
             teamNameHome.widthAnchor.constraint(equalToConstant: 80),
-
+            
             // Score Constraints
             scoreExcitement.widthAnchor.constraint(equalToConstant: 80),
             scoreExcitement.centerXAnchor.constraint(equalTo: contentCell.centerXAnchor),
@@ -119,9 +117,9 @@ class GameCell: UITableViewCell {
             // Arena Constraints
             arenaName.topAnchor.constraint(equalTo: contentCell.topAnchor, constant: 10),
             arenaName.centerXAnchor.constraint(equalTo: contentCell.centerXAnchor)
-
+            
             ])
-
+        
     }
     
 }
