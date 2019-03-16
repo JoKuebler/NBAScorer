@@ -24,7 +24,7 @@ class Requests {
     func makeRequest(apicall: String, completionHandlerParam: @escaping (_ result : NSDictionary) -> ()) {
         
         // User credential for my sportsfeed
-        let credential = URLCredential(user: "37589a6c-8217-4b96-8b06-e1ecf8", password: "joni1992", persistence: .forSession)
+        let credential = URLCredential(user: "5f9ea979-8a53-49d7-86b0-362c1b", password: "MYSPORTSFEEDS", persistence: .forSession)
         
         // Make request
         AF.request(apicall)
@@ -63,7 +63,7 @@ class Requests {
         dateFormatter.dateFormat = "yyyyMMdd"
         let yesterdayString = dateFormatter.string(from: yesterday!)
         
-        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/current/scoreboard.json?fordate=" + yesterdayString, completionHandlerParam: completionHandler)
+        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v2.1/pull/nba/current/date/" + yesterdayString + "/games.json", completionHandlerParam: completionHandler)
     }
     
     /**
@@ -75,7 +75,7 @@ class Requests {
      */
     func getTeamStandings(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
         
-        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v1.2/pull/nba/2018-2019-regular/conference_team_standings.json", completionHandlerParam: completionHandler)
+        self.makeRequest(apicall: "https://api.mysportsfeeds.com/v2.1/pull/nba/current/standings.json", completionHandlerParam: completionHandler)
     }
     
     

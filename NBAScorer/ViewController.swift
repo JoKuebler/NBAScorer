@@ -31,8 +31,8 @@ class ViewController: UITableViewController {
             // Easy access with SwiftyJSON
             self.scoreBoardResult = JSON(lastNightGames)
             // Count amount of games
-            self.lastGamesCount = self.scoreBoardResult["scoreboard"]["gameScore"].count
-        
+            self.lastGamesCount = self.scoreBoardResult["games"].count
+
             // Reload TableView when Data is ready
             self.tableView.reloadData()
             
@@ -88,14 +88,14 @@ class ViewController: UITableViewController {
         cell.contentView.backgroundColor = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
         
         // Get daily Game Entries
-        let gameEntries = self.scoreBoardResult["scoreboard"]["gameScore"]
+        let gameEntries = self.scoreBoardResult["games"]
         
         // Assign each entry to one row
         let singleGame = gameEntries[indexPath.row]
         
         // Get abbreviation for easy use later
-        let curAbrAway = singleGame["game"]["awayTeam"]["Abbreviation"].string
-        let curAbrHome = singleGame["game"]["homeTeam"]["Abbreviation"].string
+        let curAbrAway = singleGame["schedule"]["awayTeam"]["abbreviation"].string
+        let curAbrHome = singleGame["schedule"]["homeTeam"]["abbreviation"].string
         
         // Calculate Scores
         self.teamScore = Scoring.instance.calculateTeamScore(scoreBoardJson: singleGame)
@@ -104,7 +104,7 @@ class ViewController: UITableViewController {
         // Set values of UILabels and UIImages
         cell.teamNameAway.text = Constants.instance.teamNames[curAbrAway!]
         cell.teamNameHome.text = Constants.instance.teamNames[curAbrHome!]
-        cell.arenaName.text = singleGame["game"]["location"].string
+        cell.arenaName.text = singleGame["schedule"]["venue"]["name"].string
         cell.iconAway.image = UIImage(named: curAbrAway! + ".png")!
         cell.iconHome.image = UIImage(named: curAbrHome! + ".png")!
         cell.scoreExcitement.text = "\(self.teamScore)"

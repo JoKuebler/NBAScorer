@@ -22,8 +22,8 @@ class Scoring {
      */
     func calculateTeamScore(scoreBoardJson: JSON) -> Double {
         
-        let awayScore = scoreBoardJson["awayScore"].intValue
-        let homeScore = scoreBoardJson["homeScore"].intValue
+        let awayScore = scoreBoardJson["score"]["awayScoreTotal"].intValue
+        let homeScore = scoreBoardJson["score"]["homeScoreTotal"].intValue
         var teamDiffScore = 0.0
         
         switch abs(awayScore - homeScore) {
