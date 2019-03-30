@@ -14,21 +14,27 @@ class Requests {
     
     // Instace to make calls in ViewController
     static let instance = Requests()
-    // Today
-    let currentDate = Date()
-    let calendar = Calendar.current
-    // Converts date in desired format
-    let dateFormatter = DateFormatter()
-    
     
     func makeRequest(apicall: String, completionHandlerParam: @escaping (_ result : NSDictionary) -> ()) {
         
+        
         // User credential for my sportsfeed
-        let credential = URLCredential(user: "5f9ea979-8a53-49d7-86b0-362c1b", password: "MYSPORTSFEEDS", persistence: .forSession)
+        // To prevent errors URL ProtectionSpace is neccessary
+        let protectionSpace = URLProtectionSpace.init(host: "api.mysportsfeeds.com",
+                                                      port: 443,
+                                                      protocol: "https",
+                                                      realm: nil,
+                                                      authenticationMethod: nil)
+        
+        let userCredential = URLCredential(user: "5f9ea979-8a53-49d7-86b0-362c1b",
+                                           password: "MYSPORTSFEEDS",
+                                           persistence: .permanent)
+        
+        URLCredentialStorage.shared.setDefaultCredential(userCredential, for: protectionSpace)
         
         // Make request
         AF.request(apicall)
-            .authenticate(with: credential)
+            .authenticate(with: userCredential)
             .responseJSON { response in
                 
                 // Send error message if data can't be fetched
@@ -57,11 +63,7 @@ class Requests {
      
      :returns: No return value
      */
-    func getScoreBoard(completionHandler: @escaping (_ result : NSDictionary) -> ()) {
-        
-        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
-        dateFormatter.dateFormat = "yyyyMMdd"
-        let yesterdayString = dateFormatter.string(from: yesterday!)
+    func getScoreBoard(yesterdayString: String, completionHandler: @escaping (_ result : NSDictionary) -> ()) {
         
         self.makeRequest(apicall: "https://api.mysportsfeeds.com/v2.1/pull/nba/current/date/" + yesterdayString + "/games.json", completionHandlerParam: completionHandler)
     }

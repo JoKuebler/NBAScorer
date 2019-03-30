@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DD3D16F322205490003E54DA /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3D16F222205490003E54DA /* GameCell.swift */; };
+		DDA1C83D223D32AA00613E4E /* NBAScorer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDA1C83B223D32AA00613E4E /* NBAScorer.xcdatamodeld */; };
 		DDC2C8352226913100283C1E /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */; };
 		DDC2C8362226913100283C1E /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */; };
 		DDC2C838223437EA00283C1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C837223437EA00283C1E /* Constants.swift */; };
@@ -25,6 +26,7 @@
 		0A61542325A8493281D7B24D /* Pods_NBAScorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBAScorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BB51D025DD34F0896CDFF1 /* Pods-NBAScorer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAScorer.release.xcconfig"; path = "Target Support Files/Pods-NBAScorer/Pods-NBAScorer.release.xcconfig"; sourceTree = "<group>"; };
 		DD3D16F222205490003E54DA /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		DDA1C83C223D32AA00613E4E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		DDC2C8332226913100283C1E /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		DDC2C8342226913100283C1E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		DDC2C837223437EA00283C1E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				DD3D16F222205490003E54DA /* GameCell.swift */,
 				DDC2C837223437EA00283C1E /* Constants.swift */,
 				DDC2C83922345D5B00283C1E /* Scoring.swift */,
+				DDA1C83B223D32AA00613E4E /* NBAScorer.xcdatamodeld */,
 			);
 			path = NBAScorer;
 			sourceTree = "<group>";
@@ -148,6 +151,11 @@
 				TargetAttributes = {
 					DDD1BB84221B22EB002A8B49 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -241,6 +249,7 @@
 				DDC2C838223437EA00283C1E /* Constants.swift in Sources */,
 				DDC95766221B256100CF5F54 /* Requests.swift in Sources */,
 				DDD1BB8B221B22EB002A8B49 /* ViewController.swift in Sources */,
+				DDA1C83D223D32AA00613E4E /* NBAScorer.xcdatamodeld in Sources */,
 				DDD1BB89221B22EB002A8B49 /* AppDelegate.swift in Sources */,
 				DD3D16F322205490003E54DA /* GameCell.swift in Sources */,
 				DDC2C83A22345D5B00283C1E /* Scoring.swift in Sources */,
@@ -390,6 +399,7 @@
 			baseConfigurationReference = FD73773239A9C018D99995B4 /* Pods-NBAScorer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNHR6T4X73;
 				INFOPLIST_FILE = NBAScorer/Info.plist;
@@ -399,6 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JDK.NBAScorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -410,6 +421,7 @@
 			baseConfigurationReference = 56BB51D025DD34F0896CDFF1 /* Pods-NBAScorer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNHR6T4X73;
 				INFOPLIST_FILE = NBAScorer/Info.plist;
@@ -419,6 +431,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JDK.NBAScorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -447,6 +460,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DDA1C83B223D32AA00613E4E /* NBAScorer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DDA1C83C223D32AA00613E4E /* Model.xcdatamodel */,
+			);
+			currentVersion = DDA1C83C223D32AA00613E4E /* Model.xcdatamodel */;
+			path = NBAScorer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DDD1BB7D221B22EB002A8B49 /* Project object */;
 }
