@@ -194,8 +194,6 @@ class ViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //print("CALLED")
-        
         // Get and style GameCell: No grey background on touch and Change backgroundcolor of cells
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.instance.cellID) as! GameCell
         cell.selectionStyle = .none
@@ -204,8 +202,7 @@ class ViewController: UITableViewController {
         //print(type(of: self.scoreBoardResult))
         // Get daily Game Entries
         let gameEntries = self.scoreBoardResult["games"]
-        
-        //print(gameEntries)
+
         
         // Assign each entry to one row
         let singleGame = gameEntries[indexPath.row]
@@ -217,6 +214,16 @@ class ViewController: UITableViewController {
         // Calculate Scores
         self.teamScore = Scoring.instance.calculateTeamScore(scoreBoardJson: singleGame)
         self.standingScore = Scoring.instance.calculateTeamStandScore(standingJson: self.teamStandingResult)
+        
+        // Color according to Score
+        if self.teamScore > 7.0 {
+            cell.arenaName.textColor = .white
+            cell.teamNameHome.textColor = .white
+            cell.teamNameAway.textColor = .white
+        }
+        
+        //cell.contentCell.backgroundColor = UIColor(hexString: Constants.instance.colorSchemes["\(self.teamScore)"]!)
+        //cell.iconAway.backgroundColor = UIColor(hexString: Constants.instance.colorSchemes["\(self.teamScore)"]!)
         
         // Set values of UILabels and UIImages
         cell.teamNameAway.text = Constants.instance.teamNames[curAbrAway!]
@@ -235,6 +242,11 @@ class ViewController: UITableViewController {
         return 145
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destination = DetailViewController()
+        navigationController?.pushViewController(destination, animated: true)
+    }
     
 }
 

@@ -19,6 +19,8 @@
 		DDD1BB8E221B22EB002A8B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD1BB8C221B22EB002A8B49 /* Main.storyboard */; };
 		DDD1BB90221B22ED002A8B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD1BB8F221B22ED002A8B49 /* Assets.xcassets */; };
 		DDD1BB93221B22ED002A8B49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD1BB91221B22ED002A8B49 /* LaunchScreen.storyboard */; };
+		DDE8E69A226B1F0500D1E067 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE8E699226B1F0500D1E067 /* DetailViewController.swift */; };
+		DDE8E69C226DFCEB00D1E067 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE8E69B226DFCEB00D1E067 /* ColorExtension.swift */; };
 		F7B9F353E7E96959612A6992 /* Pods_NBAScorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A61542325A8493281D7B24D /* Pods_NBAScorer.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		DDD1BB8F221B22ED002A8B49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDD1BB92221B22ED002A8B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDD1BB94221B22ED002A8B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDE8E699226B1F0500D1E067 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DDE8E69B226DFCEB00D1E067 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		FD73773239A9C018D99995B4 /* Pods-NBAScorer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBAScorer.debug.xcconfig"; path = "Target Support Files/Pods-NBAScorer/Pods-NBAScorer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,8 @@
 				DDC2C837223437EA00283C1E /* Constants.swift */,
 				DDC2C83922345D5B00283C1E /* Scoring.swift */,
 				DDA1C83B223D32AA00613E4E /* NBAScorer.xcdatamodeld */,
+				DDE8E699226B1F0500D1E067 /* DetailViewController.swift */,
+				DDE8E69B226DFCEB00D1E067 /* ColorExtension.swift */,
 			);
 			path = NBAScorer;
 			sourceTree = "<group>";
@@ -249,10 +255,12 @@
 				DDC2C838223437EA00283C1E /* Constants.swift in Sources */,
 				DDC95766221B256100CF5F54 /* Requests.swift in Sources */,
 				DDD1BB8B221B22EB002A8B49 /* ViewController.swift in Sources */,
+				DDE8E69C226DFCEB00D1E067 /* ColorExtension.swift in Sources */,
 				DDA1C83D223D32AA00613E4E /* NBAScorer.xcdatamodeld in Sources */,
 				DDD1BB89221B22EB002A8B49 /* AppDelegate.swift in Sources */,
 				DD3D16F322205490003E54DA /* GameCell.swift in Sources */,
 				DDC2C83A22345D5B00283C1E /* Scoring.swift in Sources */,
+				DDE8E69A226B1F0500D1E067 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
